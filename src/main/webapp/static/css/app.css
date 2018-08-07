@@ -1,0 +1,75 @@
+body {
+	height: 70%;
+	background-color: rgb(245, 245, 245);
+}
+
+body, .form-control {
+	font-size: 12px !important;
+}
+
+.formcontainer {
+	background-color: #DAE8E8;
+	padding: 20px;
+}
+
+.tablecontainer {
+	overflow-x: auto;
+}
+
+.generic-container {
+	margin-left: 20px;
+	margin-right: 15px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 20px;
+	background-color: #EAE7E7;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	box-shadow: 0 0 30px black;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+/* Zebra striping */
+tr:nth-of-type(odd) {
+	background: #eee;
+}
+
+th {
+	background: #DAE8E8;
+	font-weight: bold;
+	border: 2px solid black;
+}
+
+td {
+	border: 1px solid rgb(245, 245, 245);
+}
+
+.ms-parent {
+	width: 120px !important;
+}
+
+button.ms-choice {
+	height: 35px;
+}
+
+span {
+	padding-top: 5px;
+}
+
+#clear {
+	width: 70px !important;
+}
+
+#submit {
+	padding-right: 0px;
+	padding-left: 30px;
+	width:100px;
+}
+
+#state {
+	padding-bottom: 10px;
+}

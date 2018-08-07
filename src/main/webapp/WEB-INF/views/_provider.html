@@ -1,0 +1,198 @@
+<html>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<head>
+<title>Provider Summary</title>
+
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+
+<link href="/static/css/app.css" rel="stylesheet"></link>
+<link href="/static/css/multiple-select.css" rel="stylesheet"></link>
+
+</head>
+<body data-ng-app="provider" data-ng-controller="ProviderController as ctrl">
+	<div class="generic-container">
+		<div class="panel panel-default">
+			<div class="panel-heading">
+				<span class="lead">Healthcare Provider Summary Search</span>
+			</div>
+			<div class="formcontainer	">
+				<div class="row">
+					<div class=" col-md-3 col-xs-12">
+						<label class="col-sm-4">Min Discharges</label>
+						<div class="col-sm-4">
+							<input type="number"
+								data-ng-model="ctrl.filter.minTotalDischarges"
+								class="form-control" />
+						</div>
+					</div>
+
+					<div class=" col-md-3 col-xs-12">
+						<label class="col-sm-4">Max Discharges</label>
+						<div class="col-sm-4">
+							<input type="number"
+								data-ng-model="ctrl.filter.maxTotalDischarges"
+								class="form-control" />
+						</div>
+					</div>
+
+					<div class=" col-md-3 col-xs-12">
+						<label class="col-sm-4">Min Average Covered Charges</label>
+						<div class="col-sm-4">
+							<input type="number" step="0.01"
+								data-ng-model="ctrl.filter.minAverageCoveredCharges"
+								class="form-control" />
+						</div>
+					</div>
+
+					<div class=" col-md-3 col-xs-12">
+						<label class="col-sm-4">Max Average Covered Charges</label>
+						<div class="col-sm-4">
+							<input type="number" step="0.01"
+								data-ng-model="ctrl.filter.maxAverageCoveredCharges"
+								class="form-control" />
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class=" col-md-3 col-xs-12">
+						<label class="col-sm-4">Min Average Medicare Payments</label>
+						<div class="col-sm-4">
+							<input type="number" step="0.01"
+								data-ng-model="ctrl.filter.minAverageMedicarePayments"
+								class="form-control" />
+						</div>
+					</div>
+
+					<div class=" col-md-3 col-xs-12">
+						<label class="col-sm-4">Max Average Medicare Payments</label>
+						<div class="col-sm-4">
+							<input type="number" step="0.01"
+								data-ng-model="ctrl.filter.maxAverageMedicarePayments"
+								class="form-control" />
+						</div>
+					</div>
+
+					<div class="col-md-2 col-xs-12" id = "state">
+						<label class="col-sm-4">State</label>
+						<div class="col-sm-4">
+							<input type="text" data-ng-model="ctrl.filter.state"
+								class="form-control" />
+						</div>
+					</div>
+
+
+					<div class="col-md-1 col-xs-5 ">
+						<select multiple="multiple" >
+						<option value="providerName" selected="selected">Provider Name</option>
+							<option value="providerStreetAddress" selected="selected">Provider
+								Street Address</option>
+							<option value="providerCity" selected="selected">Provider
+								City</option>
+							<option value="providerState" selected="selected">Provider
+								State</option>
+							<option value="providerZipCode" selected="selected">Provider
+								Zip Code</option>
+							<option value="hospitalReferralRegionDescription"
+								selected="selected">Hospital Referral Region
+								Description</option>
+							<option value="totalDischarges" selected="selected">Total
+								Discharges</option>
+							<option value="averageCoveredCharges" selected="selected">Average
+								Covered Charges</option>
+							<option value="averageTotalPayments" selected="selected">Average
+								Total Payments</option>
+							<option value="averageMedicarePayments" selected="selected">Average
+								Medicare Payments</option>
+						</select>
+					</div>
+
+
+
+					<div class="col-md-1  col-xs-3" id ="submit">
+						<div >
+							<button type="button" data-ng-click="ctrl.submit()"
+								class="btn btn-primary ">Submit</button>
+						</div>
+					</div>
+
+
+
+					<div class="col-md-1 col-xs-1" >
+						<div>
+							<button type="button" title="Remove all filters"
+								data-ng-click="ctrl.reset()" class="btn btn-fa">
+								<i class="fa fa-times" style="font-size: 20px;"></i>
+							</button>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="panel panel-default">
+			<!-- Default panel contents -->
+			<div class="panel-heading">
+				<span class="lead">Search Results :
+					{{ctrl.providerDetails.length}}</span>
+			</div>
+			<div class="tablecontainer">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Provider Name</th>
+							<th>Provider Street Address</th>
+							<th>Provider City</th>
+							<th>Provider State</th>
+							<th>Provider Zip Code</th>
+							<th>Hospital Referral Region Description</th>
+							<th>Total Discharges</th>
+							<th>Average Covered Charges</th>
+							<th>Average Total Payments</th>
+							<th>Average Medicare Payments</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr data-ng-repeat="p in ctrl.providerDetails">
+							<td><span data-ng-bind="p.providerName"></span></td>
+							<td><span data-ng-bind="p.providerStreetAddress"></span></td>
+							<td><span data-ng-bind="p.providerCity"></span></td>
+							<td><span data-ng-bind="p.providerState"></span></td>
+							<td><span data-ng-bind="p.providerZipCode"></span></td>
+							<td><span data-ng-bind="p.hospitalReferralRegionDescription"></span></td>
+							<td><span data-ng-bind="p.totalDischarges"></span></td>
+							<td><span>{{p.averageCoveredCharges != undefined ? '$'+p.averageCoveredCharges : "" }}</span></td>
+							<td><span>{{p.averageTotalPayments != undefined ? '$'+p.averageTotalPayments : "" }}</span></td>
+							<td><span>{{p.averageMedicarePayments != undefined ? '$'+p.averageMedicarePayments : "" }}</span></td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+	<!-- Latest compiled and minified JavaScript -->
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+	<script src="/static/js/app.js"></script>
+	<script src="/static/js/multiple-select.js"></script>
+	<script src="/static/js/service/providerService.js"></script>
+	<script src="/static/js/controller/providerController.js"></script>
+	<script>
+        $('select').multipleSelect({
+        	 placeholder: "Select Fields.."
+        });
+    </script>
+</body>
+</html>

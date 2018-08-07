@@ -1,0 +1,12 @@
+---
+server:
+  port: 8080
+---
+spring:
+# elasticsearch
+  data:
+    elasticsearch:
+      properties:
+        http.enabled: true
+        http.port: 9202
+
